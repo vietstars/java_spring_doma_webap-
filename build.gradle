@@ -55,9 +55,12 @@ configurations {
 
 dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+    
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("com.google.code.gson:gson:2.8.0")
+    compile("io.jsonwebtoken:jjwt:0.9.1")
+
     runtime("mysql:mysql-connector-java:+")
     runtime("org.springframework:spring-jdbc:+")
     annotationProcessor("org.seasar.doma:doma:${dependentVersion}")
