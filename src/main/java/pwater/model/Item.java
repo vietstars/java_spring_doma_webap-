@@ -1,4 +1,4 @@
-package webapp;
+package Pwater.Model;
 
 import java.time.LocalDateTime;
 
@@ -69,7 +69,5 @@ public class Item {
     public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
     }
-    
-    
     
 }

@@ -1,11 +1,17 @@
-package webapp;
+package Pwater.Model;
 
+import java.util.List;
+import org.seasar.doma.jdbc.tx.TransactionManager;
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 
+import Pwater.Config.AppConfig;
+import Pwater.Dao.AccountDao;
+import Pwater.Dao.AccountDaoImpl;
+
 @Entity
-public class BenItem {
-    
+public class Account {
+
     @Column(name = "id")
     private Integer id;
     
@@ -73,5 +79,23 @@ public class BenItem {
         
         return res;
     }
-    
+
+    public List GetAll(){
+		TransactionManager tm = AppConfig.singleton().getTransactionManager();
+        List allAcc = tm.required(() -> {
+            AccountDao dao = new AccountDaoImpl();
+            List list = dao.selectAll();
+            return list;
+        });
+    	// Map<String, String> account = new HashMap<String, String>();
+    	// account.put("master","admin");
+    	// account.put("hana","mod");
+    	// account.put("ben","mod");
+    	// account.put("binh","user");
+    	// account.put("tram","user");
+    	// return account;
+    	return allAcc;
+    }
 }
+
+    

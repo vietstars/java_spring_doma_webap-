@@ -1,11 +1,18 @@
+version = '0.1.0'
+ext.dependentVersion = '2.24.0'
+
 buildscript {
+	ext {
+		springBootVersion = '2.1.6.RELEASE'
+	}
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -13,7 +20,6 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-ext.dependentVersion = '2.24.0'
 
 task copyDomaResources(type: Sync)  {
     from sourceSets.main.resources.srcDirs
@@ -29,8 +35,8 @@ compileJava {
 }
 
 bootJar {
-    baseName = 'webapp-server'
-    version =  '0.1.0'
+    baseName = 'webapp-JWT'
+    version =  version
 }
 
 sourceCompatibility = 1.8
@@ -51,11 +57,11 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile "com.google.code.gson:gson:2.8.0"
-    runtime "mysql:mysql-connector-java"
-    runtime "org.springframework:spring-jdbc:+"
-    annotationProcessor "org.seasar.doma:doma:${dependentVersion}"
-    implementation "org.seasar.doma:doma:${dependentVersion}"
+    compile("com.google.code.gson:gson:2.8.0")
+    runtime("mysql:mysql-connector-java:+")
+    runtime("org.springframework:spring-jdbc:+")
+    annotationProcessor("org.seasar.doma:doma:${dependentVersion}")
+    implementation("org.seasar.doma:doma:${dependentVersion}")
 
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
