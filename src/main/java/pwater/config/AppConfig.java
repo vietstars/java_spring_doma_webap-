@@ -49,5 +49,24 @@ public class AppConfig implements Config {
     public static AppConfig singleton() {
         return INSTANCE;
     }
+    
+//      private DaoConfig() {
+//         dialect = new MysqlDialect();
+//         DriverManagerDataSource originalDataSource = new DriverManagerDataSource();
+//         originalDataSource.setUrl("jdbc:mysql://localhost:3306/lampart_crm_demo");
+//         originalDataSource.setUsername("springstudent");
+//         originalDataSource.setPassword("springstudent");
 
+//        DriverManagerDataSource originalDataSource = new DriverManagerDataSource();
+//        originalDataSource.setUrl(environment.getProperty("spring.datasource.url"));
+//        originalDataSource.setUsername(environment.getProperty("spring.datasource.username"));
+//        originalDataSource.setPassword(environment.getProperty("spring.datasource.password"));
+
+//        dataSource2 = new LocalTransactionDataSource(originalDataSource);
+
+//        dataSource = new LocalTransactionDataSource(
+//                "jdbc:mysql://localhost:3306/lampart_crm_demo", "springstudent", "springstudent");
+//         transactionManager = new LocalTransactionManager(
+//                 dataSource2.getLocalTransaction(getJdbcLogger()));
+//     }
 }
